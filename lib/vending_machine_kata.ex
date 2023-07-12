@@ -6,6 +6,7 @@ defmodule VendingMachine do
         5 -> 0.05
         2.268 -> 0.10
         5.67 -> 0.25
+        invalid_coin -> 0
       end
 
     %{total: vending_machine.total + coin_value}
