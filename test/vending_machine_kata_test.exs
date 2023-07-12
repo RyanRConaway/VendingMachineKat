@@ -1,4 +1,4 @@
-defmodule CendingMachineTest do
+defmodule VendingMachineTest do
   use ExUnit.Case
 
   test "start" do
