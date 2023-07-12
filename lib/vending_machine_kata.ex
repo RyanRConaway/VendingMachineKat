@@ -4,7 +4,7 @@ defmodule VendingMachine do
     coin_value = determine_coin_value(coin.weight_in_grams)
 
     new_coin_return = case coin_value do
-      0 -> [coin]
+      0 -> [coin | vending_machine.coin_return]
       not_zero -> []
     end
 

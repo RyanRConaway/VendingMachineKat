@@ -61,7 +61,8 @@ defmodule VendingMachineTest do
 
   test "Does not increment vending machine total when unknown coin is inserted" do
     vending_machine = %{
-      total: 0
+      total: 0,
+      coin_return: []
     }
 
     unknown_coin = %{
