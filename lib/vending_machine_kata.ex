@@ -1,7 +1,9 @@
 defmodule VendingMachine do
 
   def insert_coin(vending_machine, coin) do
-    nil
+    if(coin.weight_in_grams == 5) do
+      %{total: 0.05}
+    end
   end
 
 end
