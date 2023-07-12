@@ -45,4 +45,18 @@ defmodule VendingMachineTest do
     assert result.total == 0.10
   end
 
+  test "Can accept a single quarter" do
+    vending_machine = %{
+      total: 0
+    }
+
+    quarter = %{
+      weight_in_grams: 5.67
+    }
+
+    result = VendingMachine.insert_coin(vending_machine, quarter)
+
+    assert result.total == 0.25
+  end
+
 end
