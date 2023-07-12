@@ -6,6 +6,7 @@ defmodule VendingMachine do
       case coin.weight_in_grams do
         5 -> 0.05
         2.268 -> 0.10
+        5.67 -> 0.25
       end
 
     %{total: vending_machine.total + coin_value}
