@@ -10,7 +10,6 @@ defmodule VendingMachineTest do
       weight_in_grams: 5
     }
 
-
     result = VendingMachine.insert_coin(vending_machine, nickle)
 
     assert result.total == 0.05
@@ -25,13 +24,25 @@ defmodule VendingMachineTest do
       weight_in_grams: 5
     }
 
+    result = vending_machine
+      |> VendingMachine.insert_coin(nickle)
+      |> VendingMachine.insert_coin(nickle)
 
-    vending_machine_after_first_nickel = VendingMachine.insert_coin(vending_machine, nickle)
-
-    assert vending_machine_after_first_nickel.total == 0.05
-
-    vending_machine_after_second_nickel = VendingMachine.insert_coin(vending_machine_after_first_nickel, nickle)
-
-    assert vending_machine_after_second_nickel.total == 0.10
+    assert result.total == 0.10
   end
+
+  test "Can accept a single dime" do
+    vending_machine = %{
+      total: 0
+    }
+
+    dime = %{
+      weight_in_grams: 2.268
+    }
+
+    result = VendingMachine.insert_coin(vending_machine, dime)
+
+    assert result.total == 0.10
+  end
+
 end
