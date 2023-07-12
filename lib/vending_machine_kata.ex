@@ -1,11 +1,14 @@
 defmodule VendingMachine do
 
   def insert_coin(vending_machine, coin) do
-    if(coin.weight_in_grams == 5) do
-      new_total = vending_machine.total + 0.05
-      %{total: new_total}
-    end
-    
+
+    coin_value =
+      case coin.weight_in_grams do
+        5 -> 0.05
+        2.268 -> 0.10
+      end
+
+    %{total: vending_machine.total + coin_value}
   end
 
 end
