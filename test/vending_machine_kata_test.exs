@@ -88,6 +88,23 @@ defmodule VendingMachineTest do
     assert result.coin_return == [unknown_coin]
   end
 
+  test "When multiple coins are rejected, place each coin in the coin return" do
+    vending_machine = %{
+      total: 0,
+      coin_return: []
+    }
+
+    unknown_coin = %{
+      weight_in_grams: 1.337
+    }
+
+    result = vending_machine
+      |> VendingMachine.insert_coin(unknown_coin)
+      |> VendingMachine.insert_coin(unknown_coin)
+
+    assert result.coin_return == [unknown_coin, unknown_coin]
+  end
+
 
 
 end
