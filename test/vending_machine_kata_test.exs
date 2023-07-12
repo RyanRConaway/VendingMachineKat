@@ -59,4 +59,18 @@ defmodule VendingMachineTest do
     assert result.total == 0.25
   end
 
+  test "Does not accept unknown coins" do
+    vending_machine = %{
+      total: 0
+    }
+
+    unknown_coin = %{
+      weight_in_grams: 1.337
+    }
+
+    result = VendingMachine.insert_coin(vending_machine, unknown_coin)
+
+    assert result.total == 0
+  end
+
 end

@@ -1,7 +1,6 @@
 defmodule VendingMachine do
 
   def insert_coin(vending_machine, coin) do
-
     coin_value =
       case coin.weight_in_grams do
         5 -> 0.05
