@@ -15,7 +15,7 @@ defmodule VendingMachineTest do
     assert result.total == 0.05
   end
 
-  test "Inserting a valid coin updates the display to shows the total" do
+  test "Inserting a valid coin updates the display to show the total" do
     vending_machine = %VendingMachine{
       total: 0
     }
@@ -136,7 +136,7 @@ defmodule VendingMachineTest do
     assert result == "INSERT COIN"
   end
 
-  test "When there are coins inserted, the machine displays current vending machine total" do
+  test "Check display displays current display value" do
     vending_machine = %VendingMachine{
       display: "$0.05"
     }
