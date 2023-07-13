@@ -15,6 +15,21 @@ defmodule VendingMachineTest do
     assert result.total == 0.05
   end
 
+  test "Inserting a valid coin updates the display to shows the total" do
+    vending_machine = %VendingMachine{
+      total: 0
+    }
+
+    nickle = %{
+      weight_in_grams: 5
+    }
+
+    result = VendingMachine.insert_coin(vending_machine, nickle)
+    |> VendingMachine.check_display()
+
+    assert result == "$0.05"
+  end
+
   test "Can accept multiple nickles" do
     vending_machine = %VendingMachine{
       total: 0
