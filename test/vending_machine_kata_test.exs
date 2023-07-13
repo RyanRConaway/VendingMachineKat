@@ -121,4 +121,14 @@ defmodule VendingMachineTest do
     assert result == "INSERT COIN"
   end
 
+  test "When there are coins inserted, the machine displays current vending machine total" do
+    vending_machine = %VendingMachine{
+      display: "$0.05"
+    }
+
+    result = VendingMachine.check_display(vending_machine)
+
+    assert result == "$0.05"
+  end
+
 end

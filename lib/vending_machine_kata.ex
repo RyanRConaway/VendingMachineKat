@@ -1,6 +1,6 @@
 defmodule VendingMachine do
 
-  defstruct total: 0, coin_return: []
+  defstruct total: 0, coin_return: [], display: ""
 
   # Equal sign in function arguments are matchers, not assignments
   def insert_coin(vending_machine = %VendingMachine{}, coin) do
@@ -22,7 +22,7 @@ defmodule VendingMachine do
   end
 
   def check_display(vending_machine = %VendingMachine{}) do
-    nil
+    "INSERT COIN"
   end
 
   defp determine_coin_value(coin_weight) do
