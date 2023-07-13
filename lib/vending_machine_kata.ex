@@ -1,5 +1,7 @@
 defmodule VendingMachine do
 
+  defstruct total: 0, coin_return: []
+
   def insert_coin(vending_machine, coin) do
     coin_value = determine_coin_value(coin.weight_in_grams)
 
@@ -8,7 +10,7 @@ defmodule VendingMachine do
       not_zero -> []
     end
 
-    %{
+    %VendingMachine{
       total: vending_machine.total + coin_value,
       coin_return: new_coin_return
     }

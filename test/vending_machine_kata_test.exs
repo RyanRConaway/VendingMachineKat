@@ -46,9 +46,7 @@ defmodule VendingMachineTest do
   end
 
   test "Can accept a single quarter" do
-    vending_machine = %{
-      total: 0
-    }
+    vending_machine = %VendingMachine{}
 
     quarter = %{
       weight_in_grams: 5.67
@@ -60,10 +58,7 @@ defmodule VendingMachineTest do
   end
 
   test "Does not increment vending machine total when unknown coin is inserted" do
-    vending_machine = %{
-      total: 0,
-      coin_return: []
-    }
+    vending_machine = %VendingMachine{}
 
     unknown_coin = %{
       weight_in_grams: 1.337
@@ -75,10 +70,7 @@ defmodule VendingMachineTest do
   end
 
   test "When coin is rejected, place coin in the coin return" do
-    vending_machine = %{
-      total: 0,
-      coin_return: []
-    }
+    vending_machine = %VendingMachine{}
 
     unknown_coin = %{
       weight_in_grams: 1.337
@@ -90,10 +82,7 @@ defmodule VendingMachineTest do
   end
 
   test "When multiple coins are rejected, place each coin in the coin return" do
-    vending_machine = %{
-      total: 0,
-      coin_return: []
-    }
+    vending_machine = %VendingMachine{}
 
     unknown_coin = %{
       weight_in_grams: 1.337
@@ -106,6 +95,22 @@ defmodule VendingMachineTest do
     assert result.coin_return == [unknown_coin, unknown_coin]
   end
 
+  test "When valid coin is given, coin_return retains its contents" do
+    unknown_coin = %{
+      weight_in_grams: 1.337
+    }
 
+    quarter = %{
+      weight_in_grams: 5.67
+    }
+
+    vending_machine = %VendingMachine{
+      coin_return: [unknown_coin]
+    }
+
+    result = VendingMachine.insert_coin(vending_machine, quarter)
+
+    assert result.coin_return == [unknown_coin]
+  end
 
 end
