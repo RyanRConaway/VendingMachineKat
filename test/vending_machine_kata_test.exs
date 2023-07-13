@@ -146,4 +146,16 @@ defmodule VendingMachineTest do
     assert result == "$0.05"
   end
 
+  test "Invalid vending machines return an error" do
+    invalid_vending_machine = %{
+      display: "I am not a vending machine",
+      total: 9001,
+      coin_return: ["I am not a coin"]
+    }
+
+    {status, message} = VendingMachine.check_display(invalid_vending_machine)
+
+    assert status == :error
+    assert message == "The object passed in as the Vending Machine is not a Vending Machine struct"
+  end
 end
