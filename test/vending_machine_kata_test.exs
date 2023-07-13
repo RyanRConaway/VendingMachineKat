@@ -2,7 +2,7 @@ defmodule VendingMachineTest do
   use ExUnit.Case
 
   test "Can accept a single nickle" do
-    vending_machine = %{
+    vending_machine = %VendingMachine{
       total: 0
     }
 
@@ -16,7 +16,7 @@ defmodule VendingMachineTest do
   end
 
   test "Can accept multiple nickles" do
-    vending_machine = %{
+    vending_machine = %VendingMachine{
       total: 0
     }
 
@@ -32,7 +32,7 @@ defmodule VendingMachineTest do
   end
 
   test "Can accept a single dime" do
-    vending_machine = %{
+    vending_machine = %VendingMachine{
       total: 0
     }
 
@@ -111,6 +111,14 @@ defmodule VendingMachineTest do
     result = VendingMachine.insert_coin(vending_machine, quarter)
 
     assert result.coin_return == [unknown_coin]
+  end
+
+  test "When there are no coins inserted, the machine displays INSERT COIN" do
+    vending_machine = %VendingMachine{}
+
+    result = VendingMachine.check_display(vending_machine)
+
+    assert result == "INSERT COIN"
   end
 
 end
